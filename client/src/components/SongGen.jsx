@@ -189,13 +189,13 @@ const SongGen = () => {
 
   return (
 
-   <div className=" flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-r from-pink-500 via-gray-400 to-cyan-600   p-4">
+   <div className=" flex flex-col items-center justify-center relative overflow-hidden  bg-gradient-to-r from-gray-700 to-black  p-4">
 
   <span className=' my-8 text-black  rounded-full p-4 text-6xl  md:text-8xl'><FaHeadphones /></span>
- <h1 className="flex flex-col text-center font-extrabold text-3xl md:text-4xl mb-6 p-4  items-center  bg-white text-pink-600   rounded-md shadow-md">
-     Welcome to Sonnet-Sounds! 🎶
+ <h1 className="flex flex-col text-center font-extrabold text-xl text-cyan-400 md:text-2xl mb-6 p-4  items-center   rounded-md ">
+ 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓢𝓸𝓷𝓷𝓮𝓽-𝓢𝓸𝓾𝓷𝓭𝓼! 🎶
   </h1>
-<div className="text-center p-4  pb-12 bg-gradient-to-br from-pink-400 to-purple-600 text-white rounded-2xl shadow-2xl">
+<div className="text-center p-4  pb-12  rounded-2xl shadow-2xl">
   
 
   <div className="">
@@ -217,11 +217,9 @@ const SongGen = () => {
   </p>
 
   <div className="bg-white text-gray-900 shadow-lg rounded-xl p-4 md:w-[80%] mx-auto">
-    <h2 className="text-2xl md:text-3xl font-bold text-pink-500 mb-4">🎵 Why You'll Love Sonnet-Sounds? </h2>
+    <h2 className="text-2xl md:text-3xl font-bold text-blue-500 mb-4">🎵 Why You'll Love Sonnet-Sounds? </h2>
     <ul className="space-y-4 text-center text-lg font-bold text-gray-700">
-      <li >
-         <span className='text-pink-400'>AI-powered music composition in seconds</span>
-      </li>
+      
       <li className="flex ">
         <span>🎙️</span> <span>Choose any mood, theme, or genre</span>
       </li>
@@ -241,12 +239,11 @@ const SongGen = () => {
 </div>
 
 
-<div className="relative inline-block p-[5px] rounded-lg animate-border">
-  <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-white to-gray-300 rounded-lg blur-lg opacity-50"></div>
-  <h1 className="relative text-[18px] text-center md:text-5xl  text-gray-800 md:bg-gradient-to-r from-purple-500 via-white to-pink-500 font-bold my-12  p-5 rounded-xl ">
+<div className="relative inline-block p-[5px] rounded-lg  md:w-[700px]  animate-border">
+  <h1 className="relative text-[15px] w-[80%] mx-auto text-center bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl border text-gray-300 font-bold my-12  p-5 rounded-xl ">
     🎤 Start Creating Now! 🎶
   </h1>
-<div className="relative bg-black flex flex-col mt-6 items- justify-center p-6 border-2 md:border-8 border-cyan-400  max-w-3xl  backdrop-blur-lg rounded-2xl shadow-2xl transition-all hover:shadow-blue-900">
+<div className="relative bg-black flex flex-col mt-4 px-4 justify-center p-6 border-2 md:border-8 border-cyan-400  max-w-3xl  backdrop-blur-lg rounded-2xl shadow-2xl transition-all hover:shadow-blue-900">
 
   <div>
      <img className='h-16 md:h-28 mx-auto' src='./images/logox.png'/>
@@ -272,7 +269,7 @@ const SongGen = () => {
   <button
     onClick={handleGenerateSong}
     disabled={songStatus === "loading"}
-    className="md:w-[80%] w-[280px] mt-6 mx-auto text-white px-6 py-3 text-lg font-bold  bg-gradient-to-r from-pink-400 via-cyan-500 to-blue-400  rounded-xl transition-all transform shadow-xl hover:shadow-blue-500/50 hover:scale-105 flex items-center justify-center gap-3 border border-white/30"
+    className="md:w-[80%] w-[280px] mt-6 mx-auto text-white px-6 py-3 text-lg font-bold  bg-gradient-to-r from-green-400 to-blue-500 rounded-xl transition-all transform shadow-xl hover:shadow-blue-500/50 hover:scale-105 flex items-center justify-center gap-3 border border-white/30"
   >
     {songStatus === "loading" ? (
       <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="1.75" width="30" visible={true} />
@@ -309,7 +306,7 @@ const SongGen = () => {
 </div>
 
 
-<div className="w-[95%] py-8   md:w-[90%] mx-auto bg-gradient-to-r from-pink-500 to-cyan-500 text-white font-semibold p-2 rounded-xl shadow-lg my-10">
+<div className="w-[95%] py-8   md:w-[90%] mx-auto  font-semibold p-2 rounded-xl shadow-lg my-10">
   <h1 className="text-1xl md:text-2xl text-center font-extrabold text-white ">🎶 Create Your Song 🎶</h1>
 
   <p className="mt-3 text-lg text-gray-200 text-center">

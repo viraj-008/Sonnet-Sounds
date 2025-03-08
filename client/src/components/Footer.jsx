@@ -4,7 +4,7 @@ const Footer = () => {
     <div>
        <footer className=" bg-gray-900  w-full text-center p-3">
               <h3 className="text-lg font-semibold text-white">
-                AI Song Generator | Created by Viraj Shekhar
+                AI Song Generator | Created by vivek kumar
               </h3>
               <p className="text-sm text-gray-700 mt-2">
                 Transforming text into futuristic AI-generated music
