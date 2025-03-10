@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useSelector ,useDispatch} from "react-redux";
 import { removeToken } from "../slices/AuthSlice";
 import { BsMenuButtonWide } from "react-icons/bs";
@@ -12,7 +12,7 @@ const Navbar = () => {
   const dispatch=useDispatch()
 
   return (
-    <div className="flex text-center px-6 py-2    shadow-2xl  ">
+    <div className="flex text-center px-6 py-2 bg-black  shadow-2xl  ">
       {/* Logo */}
       <span className="mx-auto flex justify-start items-center w-full text-white font-bold">
         <Link to={"/"}>

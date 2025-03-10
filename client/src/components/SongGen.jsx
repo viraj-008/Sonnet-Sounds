@@ -189,18 +189,18 @@ const SongGen = () => {
 
   return (
 
-   <div className=" flex flex-col items-center justify-center relative overflow-hidden  bg-gradient-to-r from-gray-700 to-black  p-4">
+   <div className=" flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#2dd4bf]  to-[#1f2937] p-4">
 
-  <span className=' my-8 text-black  rounded-full p-4 text-6xl  md:text-8xl'><FaHeadphones /></span>
- <h1 className="flex flex-col text-center font-extrabold text-xl text-cyan-400 md:text-2xl mb-6 p-4  items-center   rounded-md ">
- 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓢𝓸𝓷𝓷𝓮𝓽-𝓢𝓸𝓾𝓷𝓭𝓼! 🎶
+  <span className=' my-8 text-cyan-800  rounded-full p-4 text-6xl  md:text-8xl'><FaHeadphones /></span>
+ <h1 className="flex flex-col text-center font-extrabold text-2xl text-white md:text-2xl mb-2 p-4  items-center   rounded-md ">
+ 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸  <span className=' text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-red-500 to-blue-600'>𝓢𝓸𝓷𝓷𝓮𝓽-𝓢𝓸𝓾𝓷𝓭𝓼!</span> 🎶
   </h1>
 <div className="text-center p-4  pb-12  rounded-2xl shadow-2xl">
   
 
   <div className="">
     <img
-      className="hidden md:block mx-auto rounded-xl shadow-2xl border-4 border-white"
+      className="hidden md:block mx-auto rounded-xl shadow-2xl border-4 border-black"
       src="https://img.freepik.com/premium-photo/abstract-background-with-attractive-woman-headphones-neon-illuminated-colors-colourful-female-portrait-young-girl-enjoying-music-horizontal-illustration-banner-design-generative-ai_9209-12708.jpg"
       alt="Music Vibes"
     />
@@ -217,8 +217,8 @@ const SongGen = () => {
   </p>
 
   <div className="bg-white text-gray-900 shadow-lg rounded-xl p-4 md:w-[80%] mx-auto">
-    <h2 className="text-2xl md:text-3xl font-bold text-blue-500 mb-4">🎵 Why You'll Love Sonnet-Sounds? </h2>
-    <ul className="space-y-4 text-center text-lg font-bold text-gray-700">
+    <h2 className="text-xl md:text-2xl  text-center md:text-start font-bold text-green-900 mb-4">🎵 Why You'll Love Sonnet-Sounds? </h2>
+    <ul className="space-y-2  text-sm font-bold text-gray-600  px-2">
       
       <li className="flex ">
         <span>🎙️</span> <span>Choose any mood, theme, or genre</span>
@@ -307,17 +307,17 @@ const SongGen = () => {
 
 
 <div className="w-[95%] py-8   md:w-[90%] mx-auto  font-semibold p-2 rounded-xl shadow-lg my-10">
-  <h1 className="text-1xl md:text-2xl text-center font-extrabold text-white ">🎶 Create Your Song 🎶</h1>
+  <h1 className="text-1xl md:text-2xl  font-extrabold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text">🎶 Create Your Song 🎶</h1>
 
-  <p className="mt-3 text-lg text-gray-200 text-center">
-    Enter a prompt and let our AI generate a unique song for you! Whether you want a love ballad, 
+  <p className="mt-3 text-md text-gray-300 ml-5 ">
+  Enter a prompt and let our AI generate a unique song for you! Whether you want a love ballad, 
     a motivational anthem, or a poetic story, the possibilities are endless. Describe the mood, 
     theme, or style you’d like, and watch the magic unfold. 
   </p>
 
-  <h2 className="text-1xl md:text-2xl font-bold text-black mt-6">✨ Example Prompts:</h2>
+  <h2 className="text-1xl md:text-2xl font-bold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text mt-6">✨ Example Prompts:</h2>
   
-  <ul className="mt-3  text-start  space-y-2 text-gray-100">
+  <ul className="mt-3  text-start  space-y-2 text-gray-300">
     <li className='flex gap-x-3'><span>🎵</span> Write a love song for a summer night.</li>
     <li className='flex gap-x-3'><span>🔥</span> Create a song about overcoming challenges.</li>
     <li className='flex gap-x-3'><span>🚗 </span>A fun, upbeat song about a road trip.</li>
@@ -325,9 +325,9 @@ const SongGen = () => {
     <li className='flex gap-x-3'><span>🎭 </span>A deep and emotional song about self-discovery.</li>
   </ul>
 
-  <h2 className="text-xl font-bold text-white mt-6">📢 Share Your Creations</h2>
-  <p className="text-gray-200 mt-2">
-    Feel free to share your AI-generated song with the world! Post it on social media, save it for later, 
+  <h2 className="text-xl font-bold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text mt-6">📢 Share Your Creations</h2>
+  <p className="text-gray-300 mt-2  ml-6">
+  .  Feel free to share your AI-generated song with the world! Post it on social media, save it for later, 
     or use it as the perfect soundtrack for your next adventure. 
   </p>
 
