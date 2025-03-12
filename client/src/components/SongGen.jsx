@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setSongStatus, setSongUrl } from '../slices/Songslice.js'
 import { RotatingLines } from 'react-loader-spinner';
@@ -6,7 +6,7 @@ import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
 import {  toast ,Bounce} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {  FaHeadphones  } from "react-icons/fa";
+import { motion} from "framer-motion";
 
 
 const SongGen = () => {
@@ -194,13 +194,22 @@ const SongGen = () => {
 
   <section className="w-full bg-gray-900  px-8">
  
-      <div className="mx-auto flex flex-col items-center lg:flex-row justify-center gap-10 py-20 max-w-[1440px] bg-no-repeat">
+      <div className="mx-auto flex flex-col items-center lg:flex-row justify-center gap-10 py-10 max-w-[1440px] bg-no-repeat">
         <div className=" flex-col justify-center items-start gap-20 inline-flex">
           <div className="self-stretch flex-col justify-start items-start gap-5 flex">
-            <h1 className="self-stretch text-white text-5xl font-bold font-['Roboto']">
-              Welcome to:
-              <span className=" text-[#3e9d26]"> Sonnets Sounds</span>
-            </h1>
+         
+
+<motion.h1
+    whileInView={{ opacity: 1, y: 0 }} // Animate when visible
+  initial={{ opacity: 0, y: -50 }} // Start hidden and moved up
+  transition={{ duration: 0.6, ease: "easeOut" }} // Smooth motion
+  viewport={{ once: false, amount: 0.3 }} // Triggers every time when 30% visible
+  className="self-stretch text-white text-5xl font-bold font-['Roboto']"
+>
+  Welcome to:  
+  <span className="text-[#3e9d26]"> Sonnets Sounds</span>
+</motion.h1>
+
             <p className="self-stretch text-white text-xl font-normal font-['Roboto']">
             Create mesmerizing songs with the power of AI. Enter your prompt and let Sonnet Sounds generate unique melodies, lyrics, and vocals just for you..
             </p>
@@ -222,29 +231,46 @@ const SongGen = () => {
             </button>
           </div>
         </div>
-        <img className="w-full max-w-[400px]   " src={"./images/logox.png"} alt="Futuristic Shoe" />
+        <motion.img
+  src="./images/logox.png"
+  alt="logo"
+  className="w-full max-w-[400px]"
+  initial={{ opacity: 0, x: 50 }} // Start off-screen to the right
+  whileInView={{ opacity: 1, x: 0 }} // Slide in when visible
+  transition={{ duration: 0.8, ease: "easeOut" }} // Smooth transition
+  viewport={{ once: false, amount: 0.3 }} // Triggers every scroll when 30% visible
+/>
       </div>
     </section>
 <div className="text-center p-4  pb-12  rounded-2xl ">
   
 
 
+<h1 className="self-stretch text-white text-2xl md:text-5xl font-bold font-['Roboto'] text-center"
+>
+  Create your personalized song
+  <span className="text-gray-400"> <br/>with just a prompt! Let your heart sing! </span>
+</h1>
 
-  <p className="font-semibold   text-white    rounded-lg text-2xl md:text-[18px] text-center  md:text-3xl p-3 font-serif px-6 my-8 leading-relaxed">
-    Create your personalized song <br/> with just a prompt! Let your heart sing! 
-   
-  </p>
 </div>
 
 
 
 <div className="relative inline-block p-[5px]   md:w-[700px]  animate-border">
+<motion.h1
+     initial={{ opacity: 0, x: 50 }} // Start off-screen to the right
+  whileInView={{ opacity: 1, x: 0 }} // Slide in when visible
+  transition={{ duration: 0.8, ease: "easeOut" }} // Smooth transition
+  viewport={{ once: false, amount: 0.3 }} // Triggers every scroll when 30% visible
+  className="self-stretch text-white text-2xl md:text-5xl font-bold font-['Roboto'] text-center"
+>
 <div className="relative flex items-center justify-center w-[200px] md:w-[300px]  my-6 h-12 mx-auto mt-10"> 
   <div className="absolute w-full h-[6px]  bg-gradient-to-r from-red-400 to-blue-700  skew-x-[-80deg]"></div>
   <h2 className="relative z-10 mb-4 text-sm md:text-xl flex text-gray-200 fontt-bold font-bold tracking-wider ">
   🎤 Start Creating Now
   </h2>
 </div>
+</motion.h1>
 
 
 <div className="relative bg-black flex flex-col mt-4 px-4 justify-center p-6 border-2 md:border-8 border-cyan-400  max-w-3xl  backdrop-blur-lg rounded-2xl shadow-2xl transition-all hover:shadow-blue-900">

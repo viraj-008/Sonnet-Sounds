@@ -6,6 +6,7 @@ import { MdClose } from "react-icons/md";
 import {  toast ,Bounce} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
+import { motion} from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +49,6 @@ const Navbar = () => {
             </button>
         }
       </div>
-      {/* <MdClose  onClick={() => setIsOpen(!isOpen)}/> */}
       {/* Mobile Menu */}
       <div className="md:hidden flex justify-center items-center">
         {isOpen ?<MdClose 
@@ -59,7 +59,16 @@ const Navbar = () => {
           className="text-2xl text-blue-500 hover:text-gray-600 transition-transform transform hover:scale-110"
         />}
         {isOpen && (
-          <div className="absolute  top-14 z-20 right-0 w-full  backdrop-blur-sm text-white flex flex-col items-center p-4    animate-slide-in">
+          <motion.div
+  initial={{ opacity: 0, y: -20, scale: 0.95 }}
+  animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20, scale: isOpen ? 1 : 0.95 }}
+  exit={{ opacity: 0, y: -20, scale: 0.95 }}
+  transition={{ duration: 0.2, ease: "easeInOut" }}
+  className="absolute top-24 z-20 right-[30px] w-[80%] mx-auto max-w-[300px] 
+             bg-gradient-to-b from-gray-700 to-gray-900/90 
+             backdrop-blur-lg border border-gray-400 shadow-2xl
+             text-white flex flex-col items-center p-5 rounded-xl"
+>
             {token ? 
 
             <button
@@ -78,7 +87,7 @@ const Navbar = () => {
                           transition: Bounce,
                         });
               }}
-              className="w-full py-3 text-lg font-bold bg-red-700 transition-all transform hover:scale-105 shadow-md"
+              className="w-full py-3 text-lg rounded-lg font-bold bg-red-700 transition-all transform hover:scale-105 shadow-md"
             >
               <Link to={"/login"}>Logout</Link>
             </button>
@@ -94,7 +103,7 @@ const Navbar = () => {
             <span onClick={() => setIsOpen(false)} className="w-full mt-3 py-3 text-lg font-semibold text-center bg-gray-800  rounded-lg hover:text-black transition-all transform hover:scale-105 shadow-md">
             <Link to={"/"}>Home</Link>
             </span>
-          </div>
+            </motion.div>
         )}
       </div>
     </div>
