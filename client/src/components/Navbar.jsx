@@ -2,6 +2,7 @@ import  { useState } from "react";
 import { useSelector ,useDispatch} from "react-redux";
 import { removeToken } from "../slices/AuthSlice";
 import { BsMenuButtonWide } from "react-icons/bs";
+import { MdClose } from "react-icons/md";
 import {  toast ,Bounce} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ const Navbar = () => {
   const dispatch=useDispatch()
 
   return (
-    <div className="flex text-center px-6 py-2 bg-black  shadow-2xl  ">
+    <div className="flex text-center px-6  bg-gray-900 py-3  md:py-6  shadow-2xl  ">
       {/* Logo */}
       <span className="mx-auto flex justify-start items-center w-full text-white font-bold">
         <Link to={"/"}>
@@ -47,13 +48,16 @@ const Navbar = () => {
             </button>
         }
       </div>
-
+      {/* <MdClose  onClick={() => setIsOpen(!isOpen)}/> */}
       {/* Mobile Menu */}
       <div className="md:hidden flex justify-center items-center">
-        <BsMenuButtonWide
+        {isOpen ?<MdClose 
+          className="text-3xl text-blue-500 hover:text-gray-600 transition-transform transform hover:scale-110"
+          onClick={() => setIsOpen(!isOpen)}/>
+          :<BsMenuButtonWide
           onClick={() => setIsOpen(!isOpen)}
           className="text-2xl text-blue-500 hover:text-gray-600 transition-transform transform hover:scale-110"
-        />
+        />}
         {isOpen && (
           <div className="absolute  top-14 z-20 right-0 w-full  backdrop-blur-sm text-white flex flex-col items-center p-4    animate-slide-in">
             {token ? 

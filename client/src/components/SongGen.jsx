@@ -34,7 +34,7 @@ const SongGen = () => {
     try {
       dispatch(setSongStatus("loading"));
       const response = await fetch(
-        "https://992d-2401-4900-8849-c95c-19df-b66c-b3ec-fb10.ngrok-free.app/api/job/gen",
+        " https://65c3-2401-4900-8849-7d4b-d597-607c-ddb2-2427.ngrok-free.app/api/job/gen",
         {
           method: "POST",
           headers: {
@@ -67,7 +67,7 @@ const SongGen = () => {
       if (!data.taskId) {
         dispatch(setSongStatus("idle"));
         toast.error(
-          "Failed to initiate song generation", { 
+          data.msg ||"Failed to initiate song generation", { 
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -90,7 +90,7 @@ const SongGen = () => {
       const pollForAudioUrl = async () => {
         try {
           const statusResponse = await fetch(
-            `https://992d-2401-4900-8849-c95c-19df-b66c-b3ec-fb10.ngrok-free.app/api/job/status?taskId=${taskId}`,
+            ` https://65c3-2401-4900-8849-7d4b-d597-607c-ddb2-2427.ngrok-free.app/api/job/status?taskId=${taskId}`,
             {
               method: "GET",
               headers: {
@@ -189,60 +189,64 @@ const SongGen = () => {
 
   return (
 
-   <div className=" flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#2dd4bf]  to-[#1f2937] p-4">
+   <div className=" flex flex-col items-center justify-center relative overflow-hidden bg-gray-900">
 
-  <span className=' my-8 text-cyan-800  rounded-full p-4 text-6xl  md:text-8xl'><FaHeadphones /></span>
- <h1 className="flex flex-col text-center font-extrabold text-2xl text-white md:text-2xl mb-2 p-4  items-center   rounded-md ">
- 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸  <span className=' text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-red-500 to-blue-600'>𝓢𝓸𝓷𝓷𝓮𝓽-𝓢𝓸𝓾𝓷𝓭𝓼!</span> 🎶
-  </h1>
-<div className="text-center p-4  pb-12  rounded-2xl shadow-2xl">
+
+  <section className="w-full bg-gray-900  px-8">
+ 
+      <div className="mx-auto flex flex-col items-center lg:flex-row justify-center gap-10 py-20 max-w-[1440px] bg-no-repeat">
+        <div className=" flex-col justify-center items-start gap-20 inline-flex">
+          <div className="self-stretch flex-col justify-start items-start gap-5 flex">
+            <h1 className="self-stretch text-white text-5xl font-bold font-['Roboto']">
+              Welcome to:
+              <span className=" text-[#3e9d26]"> Sonnets Sounds</span>
+            </h1>
+            <p className="self-stretch text-white text-xl font-normal font-['Roboto']">
+            Create mesmerizing songs with the power of AI. Enter your prompt and let Sonnet Sounds generate unique melodies, lyrics, and vocals just for you..
+            </p>
+          </div>
+          <div className="justify-start items-center gap-5 inline-flex">
+            <div className="justify-start items-center gap-2.5 flex">
+              <p className="text-white text-sm font-normal font-['Roboto']">click hare</p>
+              <div className="relative">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M20.7806 12.5306L14.0306 19.2806C13.8899 19.4213 13.699 19.5004 13.5 19.5004C13.301 19.5004 13.1101 19.4213 12.9694 19.2806C12.8286 19.1399 12.7496 18.949 12.7496 18.75C12.7496 18.551 12.8286 18.3601 12.9694 18.2194L18.4397 12.75H3.75C3.55109 12.75 3.36032 12.671 3.21967 12.5303C3.07902 12.3897 3 12.1989 3 12C3 11.8011 3.07902 11.6103 3.21967 11.4697C3.36032 11.329 3.55109 11.25 3.75 11.25H18.4397L12.9694 5.78061C12.8286 5.63988 12.7496 5.44901 12.7496 5.24999C12.7496 5.05097 12.8286 4.8601 12.9694 4.71936C13.1101 4.57863 13.301 4.49957 13.5 4.49957C13.699 4.49957 13.8899 4.57863 14.0306 4.71936L20.7806 11.4694C20.8504 11.539 20.9057 11.6217 20.9434 11.7128C20.9812 11.8038 21.0006 11.9014 21.0006 12C21.0006 12.0986 20.9812 12.1961 20.9434 12.2872C20.9057 12.3782 20.8504 12.461 20.7806 12.5306Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            </div>
+            <button className="px-8 py-2.5 bg-[#3e9d26] rounded-[10px] justify-center items-center gap-2.5 flex text-white text-sm font-semibold font-['Roboto']">
+              Getting Started
+            </button>
+          </div>
+        </div>
+        <img className="w-full max-w-[400px]   " src={"./images/logox.png"} alt="Futuristic Shoe" />
+      </div>
+    </section>
+<div className="text-center p-4  pb-12  rounded-2xl ">
   
 
-  <div className="">
-    <img
-      className="hidden md:block mx-auto rounded-xl shadow-2xl border-4 border-black"
-      src="https://img.freepik.com/premium-photo/abstract-background-with-attractive-woman-headphones-neon-illuminated-colors-colourful-female-portrait-young-girl-enjoying-music-horizontal-illustration-banner-design-generative-ai_9209-12708.jpg"
-      alt="Music Vibes"
-    />
-    <img
-      className="rounded-lg mx-auto md:hidden shadow-2xl border-2 border-white"
-      src="https://w0.peakpx.com/wallpaper/473/223/HD-wallpaper-music-beat-guy-headphone-listen-man-notes-sing-song.jpg"
-      alt="Listening to Music"
-    />
-  </div>
+
 
   <p className="font-semibold   text-white    rounded-lg text-2xl md:text-[18px] text-center  md:text-3xl p-3 font-serif px-6 my-8 leading-relaxed">
     Create your personalized song <br/> with just a prompt! Let your heart sing! 
    
   </p>
-
-  <div className="bg-white text-gray-900 shadow-lg rounded-xl p-4 md:w-[80%] mx-auto">
-    <h2 className="text-xl md:text-2xl  text-center md:text-start font-bold text-green-900 mb-4">🎵 Why You'll Love Sonnet-Sounds? </h2>
-    <ul className="space-y-2  text-sm font-bold text-gray-600  px-2">
-      
-      <li className="flex ">
-        <span>🎙️</span> <span>Choose any mood, theme, or genre</span>
-      </li>
-      <li className="flex">
-        🎼 <span>Generate lyrics & melody effortlessly</span>
-      </li>
-      <li className="flex ">
-        🔥 <span>Save & share your unique creations</span>
-      </li>
-      <li className="flex gap-x-2">
-        🚀 <span>No experience needed – just describe your idea!</span>
-      </li>
-    </ul>
-  </div>
-
- 
 </div>
 
 
-<div className="relative inline-block p-[5px] rounded-lg  md:w-[700px]  animate-border">
-  <h1 className="relative text-[15px] w-[80%] mx-auto text-center bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl border text-gray-300 font-bold my-12  p-5 rounded-xl ">
-    🎤 Start Creating Now! 🎶
-  </h1>
+
+<div className="relative inline-block p-[5px]   md:w-[700px]  animate-border">
+<div className="relative flex items-center justify-center w-[200px] md:w-[300px]  my-6 h-12 mx-auto mt-10"> 
+  <div className="absolute w-full h-[6px]  bg-gradient-to-r from-red-400 to-blue-700  skew-x-[-80deg]"></div>
+  <h2 className="relative z-10 mb-4 text-sm md:text-xl flex text-gray-200 fontt-bold font-bold tracking-wider ">
+  🎤 Start Creating Now
+  </h2>
+</div>
+
+
 <div className="relative bg-black flex flex-col mt-4 px-4 justify-center p-6 border-2 md:border-8 border-cyan-400  max-w-3xl  backdrop-blur-lg rounded-2xl shadow-2xl transition-all hover:shadow-blue-900">
 
   <div>
@@ -282,7 +286,7 @@ const SongGen = () => {
 
   {/* Loading Message */}
   {songStatus === "loading" && (
-    <div className="mt-4 text-center p-2 font-serif font-semibold rounded-xl text-white animate-pulse bg-emerald-500/20 w-full">
+    <div className="mt-4 w-[80%] mx-auto text-center p-2 font-serif font-semibold rounded-xl text-white animate-pulse bg-emerald-500/20 ">
       ⏳ Generating your song... Please wait (20-40 sec) 🎵
     </div>
   )}
@@ -298,43 +302,95 @@ const SongGen = () => {
           />
           <p className="mt-4 text-lg  font-semibold text-white ">
           🎉🎶 Congratulations! Your AI-generated song is ready! 🎶🔥 Enjoy the music and let the beats take over! 🚀🎧 <br/>
-           <p className='text-pink-300 font-sans font-bold animate-bounce'>Tap the music Icon</p>
+         
           </p>
         </div>
       )}
 </div>
 </div>
+<section className="m-4 md:m-8 text-white">
+	<div className="container mx-auto p-4 my-6 space-y-2 text-center">
+		<h2 className="text-5xl font-bold">Built to Empower Every Music Creator</h2>
+		<p className="dark:text-gray-600">Transform your ideas into AI-generated melodies!</p>
+	</div>
+	<div className="container mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		<div className="flex flex-col items-center p-4">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
+				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
+			</svg>
+			<h3 className="my-3 text-3xl font-semibold">Chill Vibes</h3>
+			<div className="space-y-1 leading-tight  w-[200px] text-center">
+				<p>☕ A smooth lo-fi track for late-night study sessions.</p>
+				
+			</div>
+		</div>
+		<div className="flex flex-col items-center p-4">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
+				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
+			</svg>
+			<h3 className="my-3 text-3xl font-semibold">Energetic Anthem</h3>
+			<div className="space-y-1 leading-tight  w-[200px] text-center">
+				<p>🔥 A high-energy rock song to get you pumped up!</p>
+				
+			</div>
+		</div>
+		<div className="flex flex-col items-center p-4">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
+				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
+			</svg>
+			<h3 className="my-3 text-3xl font-semibold">Romantic Ballad</h3>
+			<div className="space-y-1 leading-tight  w-[200px] text-center">
+				<p>❤️ A heartfelt love song with soothing piano melodies.</p>
+			
+			</div>
+		</div>
+		<div className="flex flex-col items-center p-4">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
+				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
+			</svg>
+			<h3 className="my-3 text-3xl font-semibold">Epic Soundtrack</h3>
+			<div className="space-y-1 leading-tight  w-[200px] text-center">
+				<p>🎬 A cinematic orchestral piece for an adventurous journey.</p>
+			
+			</div>
+		</div>
+		<div className="flex flex-col items-center p-4">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
+				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
+			</svg>
+			<h3 className="my-3 text-3xl font-semibold">Sad & Emotional</h3>
+			<div className="space-y-1 leading-tight  w-[200px] text-center">
+				<p>💔 A melancholic melody for deep reflection.</p>
+			
+			</div>
+		</div>
+		<div className="flex flex-col items-center p-4">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
+				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
+			</svg>
+			<h3 className="my-3 text-3xl font-semibold">Upbeat Party Hit</h3>
+			<div className="space-y-1 leading-tight   w-[200px] text-center">
+				<p>🎉 A dance-pop track to keep the party going!</p>
+				
+			</div>
+		</div>
+	</div>
+</section>
 
 
-<div className="w-[95%] py-8   md:w-[90%] mx-auto  font-semibold p-2 rounded-xl shadow-lg my-10">
-  <h1 className="text-1xl md:text-2xl  font-extrabold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text">🎶 Create Your Song 🎶</h1>
+<div className='my-20 w-[90%] md:w-[60%]'>
 
-  <p className="mt-3 text-md text-gray-300 ml-5 ">
-  Enter a prompt and let our AI generate a unique song for you! Whether you want a love ballad, 
-    a motivational anthem, or a poetic story, the possibilities are endless. Describe the mood, 
-    theme, or style you’d like, and watch the magic unfold. 
-  </p>
-
-  <h2 className="text-1xl md:text-2xl font-bold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text mt-6">✨ Example Prompts:</h2>
-  
-  <ul className="mt-3  text-start  space-y-2 text-gray-300">
-    <li className='flex gap-x-3'><span>🎵</span> Write a love song for a summer night.</li>
-    <li className='flex gap-x-3'><span>🔥</span> Create a song about overcoming challenges.</li>
-    <li className='flex gap-x-3'><span>🚗 </span>A fun, upbeat song about a road trip.</li>
-    <li className='flex gap-x-3'><span>🌌 </span>A dreamy, futuristic song about exploring space.</li>
-    <li className='flex gap-x-3'><span>🎭 </span>A deep and emotional song about self-discovery.</li>
-  </ul>
-
-  <h2 className="text-xl font-bold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text mt-6">📢 Share Your Creations</h2>
-  <p className="text-gray-300 mt-2  ml-6">
-  .  Feel free to share your AI-generated song with the world! Post it on social media, save it for later, 
+  <h2 className="text-xl text-center font-bold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text mt-6">📢 Share Your Creations</h2>
+  <p className="text-gray-300 mt-2 text-center ml-6  mr-4">
+  Feel free to share your AI-generated song with the world! Post it on social media, save it for later, 
     or use it as the perfect soundtrack for your next adventure. 
   </p>
+</div>
 
  
 </div>
 
-    </div>
+    
   )
 }
 
