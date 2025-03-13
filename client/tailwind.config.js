@@ -5,8 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        anton: ["Anton", "sans-serif"],
+        stencil: ["Big Shoulders Stencil", "sans-serif"],
+        josefin: ["Josefin Sans", "sans-serif"],
+        kanit: ["Kanit", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+      },
+    },
   },
   plugins: [],
-}
+};
 

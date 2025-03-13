@@ -2,6 +2,8 @@ import  { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setSongStatus, setSongUrl } from '../slices/Songslice.js'
 import { RotatingLines } from 'react-loader-spinner';
+import { GiMusicSpell } from "react-icons/gi";
+import { MdOfflineShare } from "react-icons/md";
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
 import {  toast ,Bounce} from 'react-toastify';
@@ -204,13 +206,13 @@ const SongGen = () => {
   initial={{ opacity: 0, y: -50 }} // Start hidden and moved up
   transition={{ duration: 0.6, ease: "easeOut" }} // Smooth motion
   viewport={{ once: false, amount: 0.3 }} // Triggers every time when 30% visible
-  className="self-stretch text-white text-5xl font-bold font-['Roboto']"
+  className="self-stretch text-white text-5xl md:text-8xl font-bold font-stencil"
 >
   Welcome to:  
-  <span className="text-[#3e9d26]"> Sonnets Sounds</span>
+  <span className="text-[#3e9d26]  font-anton"> Sonnets-Sounds</span>
 </motion.h1>
 
-            <p className="self-stretch text-white text-xl font-normal font-['Roboto']">
+            <p className="self-stretch text-gray-300 text-xl  font-montserrat ">
             Create mesmerizing songs with the power of AI. Enter your prompt and let Sonnet Sounds generate unique melodies, lyrics, and vocals just for you..
             </p>
           </div>
@@ -226,8 +228,9 @@ const SongGen = () => {
                 </svg>
               </div>
             </div>
-            <button className="px-8 py-2.5 bg-[#3e9d26] rounded-[10px] justify-center items-center gap-2.5 flex text-white text-sm font-semibold font-['Roboto']">
-              Getting Started
+            <button href="/#started" className="px-8 py-2.5 bg-[#3e9d26] rounded-[10px] justify-center items-center gap-2.5 flex text-white text-sm font-semibold font-kanit 
+">
+             <a href="/#started">Getting Started</a> 
             </button>
           </div>
         </div>
@@ -246,10 +249,10 @@ const SongGen = () => {
   
 
 
-<h1 className="self-stretch text-white text-2xl md:text-5xl font-bold font-['Roboto'] text-center"
+<h1 className="self-stretch text-white text-2xl md:text-5xl  font-anton text-center"
 >
   Create your personalized song
-  <span className="text-gray-400"> <br/>with just a prompt! Let your heart sing! </span>
+  <span > <br/>with just a prompt! Let your heart sing! </span>
 </h1>
 
 </div>
@@ -264,9 +267,9 @@ const SongGen = () => {
   viewport={{ once: false, amount: 0.3 }} // Triggers every scroll when 30% visible
   className="self-stretch text-white text-2xl md:text-5xl font-bold font-['Roboto'] text-center"
 >
-<div className="relative flex items-center justify-center w-[200px] md:w-[300px]  my-6 h-12 mx-auto mt-10"> 
-  <div className="absolute w-full h-[6px]  bg-gradient-to-r from-red-400 to-blue-700  skew-x-[-80deg]"></div>
-  <h2 className="relative z-10 mb-4 text-sm md:text-xl flex text-gray-200 fontt-bold font-bold tracking-wider ">
+<div id="started" className="relative flex items-center justify-center w-[200px] md:w-[300px]  my-6 h-12 mx-auto mt-10"> 
+  <div className="absolute w-full h-[6px]  bg-cyan-400  skew-x-[-80deg]"></div>
+  <h2 className="relative z-10 mb-4 font-stencil text-sm  md:text-xl flex text-gray-200 tracking-wider ">
   🎤 Start Creating Now
   </h2>
 </div>
@@ -299,20 +302,20 @@ const SongGen = () => {
   <button
     onClick={handleGenerateSong}
     disabled={songStatus === "loading"}
-    className="md:w-[80%] w-[280px] mt-6 mx-auto text-white px-6 py-3 text-lg font-bold  bg-gradient-to-r from-green-400 to-blue-500 rounded-xl transition-all transform shadow-xl hover:shadow-blue-500/50 hover:scale-105 flex items-center justify-center gap-3 border border-white/30"
+    className="md:w-[80%] w-[280px] mt-6 mx-auto text-white px-6 py-3 text-lg font-bold  bg-purple-800 rounded-xl transition-all transform shadow-xl hover:shadow-purple-500/50 hover:scale-105 flex items-center justify-center gap-3 border border-white/30"
   >
     {songStatus === "loading" ? (
       <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="1.75" width="30" visible={true} />
     ) : (
-      <span className="flex justify-center items-center gap-2">
-      🎤 Start Creating! 🎶
+      <span className="flex justify-center items-center gap-2 font-josefin">
+      Generate Song . . . <GiMusicSpell className='text-green-400 text-2xl' />
       </span>
     )}
   </button>
 
   {/* Loading Message */}
   {songStatus === "loading" && (
-    <div className="mt-4 w-[80%] mx-auto text-center p-2 font-serif font-semibold rounded-xl text-white animate-pulse bg-emerald-500/20 ">
+    <div className="mt-4 w-[80%] mx-auto text-center p-2 font-serif font-semibold rounded-xl text-gray-900 animate-pulse bg-emerald-400 ">
       ⏳ Generating your song... Please wait (20-40 sec) 🎵
     </div>
   )}
@@ -336,16 +339,16 @@ const SongGen = () => {
 </div>
 <section className="m-4 md:m-8 text-white">
 	<div className="container mx-auto p-4 my-6 space-y-2 text-center">
-		<h2 className="text-5xl font-bold">Built to Empower Every Music Creator</h2>
-		<p className="dark:text-gray-600">Transform your ideas into AI-generated melodies!</p>
+		<h2 className="text-5xl font-bold font-stencil bg-gradient-to-r from-purple-200 via-teal-500 to-red-300 text-transparent bg-clip-text ">Built to Empower Every Music Creator</h2>
+		<p className="text-gray-200 font-montserrat   ">Transform your ideas into AI-generated melodies!</p>
 	</div>
 	<div className="container mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
 		<div className="flex flex-col items-center p-4">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
 				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
 			</svg>
-			<h3 className="my-3 text-3xl font-semibold">Chill Vibes</h3>
-			<div className="space-y-1 leading-tight  w-[200px] text-center">
+			<h3 className="my-3 text-3xl font-josefin">Chill Vibes</h3>
+			<div className="space-y-1 font-montserrat text-gray-300 leading-tight  w-[200px] text-center">
 				<p>☕ A smooth lo-fi track for late-night study sessions.</p>
 				
 			</div>
@@ -354,8 +357,8 @@ const SongGen = () => {
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
 				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
 			</svg>
-			<h3 className="my-3 text-3xl font-semibold">Energetic Anthem</h3>
-			<div className="space-y-1 leading-tight  w-[200px] text-center">
+			<h3 className="my-3 text-3xl font-josefin">Energetic Anthem</h3>
+			<div className="space-y-1 font-montserrat text-gray-300  leading-tight  w-[200px] text-center">
 				<p>🔥 A high-energy rock song to get you pumped up!</p>
 				
 			</div>
@@ -364,8 +367,8 @@ const SongGen = () => {
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
 				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
 			</svg>
-			<h3 className="my-3 text-3xl font-semibold">Romantic Ballad</h3>
-			<div className="space-y-1 leading-tight  w-[200px] text-center">
+			<h3 className="my-3 text-3xl font-josefin">Romantic Ballad</h3>
+			<div className="space-y-1 font-montserrat text-gray-300 leading-tight  w-[200px] text-center">
 				<p>❤️ A heartfelt love song with soothing piano melodies.</p>
 			
 			</div>
@@ -374,8 +377,8 @@ const SongGen = () => {
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
 				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
 			</svg>
-			<h3 className="my-3 text-3xl font-semibold">Epic Soundtrack</h3>
-			<div className="space-y-1 leading-tight  w-[200px] text-center">
+			<h3 className="my-3 text-3xl font-josefin">Epic Soundtrack</h3>
+			<div className="space-y-1 font-montserrat text-gray-300  leading-tight  w-[200px] text-center">
 				<p>🎬 A cinematic orchestral piece for an adventurous journey.</p>
 			
 			</div>
@@ -384,8 +387,8 @@ const SongGen = () => {
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
 				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
 			</svg>
-			<h3 className="my-3 text-3xl font-semibold">Sad & Emotional</h3>
-			<div className="space-y-1 leading-tight  w-[200px] text-center">
+			<h3 className="my-3 text-3xl font-josefin">Sad & Emotional</h3>
+			<div className="space-y-1 font-montserrat text-gray-300  leading-tight  w-[200px] text-center">
 				<p>💔 A melancholic melody for deep reflection.</p>
 			
 			</div>
@@ -394,8 +397,8 @@ const SongGen = () => {
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 dark:text-violet-600">
 				<path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
 			</svg>
-			<h3 className="my-3 text-3xl font-semibold">Upbeat Party Hit</h3>
-			<div className="space-y-1 leading-tight   w-[200px] text-center">
+			<h3 className="my-3 text-3xl font-josefin">Upbeat Party Hit</h3>
+			<div className="space-y-1 leading-tight font-montserrat text-gray-300  w-[200px] text-center">
 				<p>🎉 A dance-pop track to keep the party going!</p>
 				
 			</div>
@@ -404,12 +407,13 @@ const SongGen = () => {
 </section>
 
 
-<div className='my-20 w-[90%] md:w-[60%]'>
+<div className='my-20 mx-auto max-w-[1240px] md:w-[60%]'>
 
-  <h2 className="text-xl text-center font-bold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text mt-6">📢 Share Your Creations</h2>
-  <p className="text-gray-300 mt-2 text-center ml-6  mr-4">
+  <h2 className="text-4xl text-center font-bold bg-gradient-to-r from-purple-200 via-teal-500 to-red-600 text-transparent bg-clip-text mt-6 font-stencil">Share Your Creations</h2>
+  <p className="text-gray-300 mt-2 text-center ml-6  mr-4 font-kanit ">
   Feel free to share your AI-generated song with the world! Post it on social media, save it for later, 
     or use it as the perfect soundtrack for your next adventure. 
+  <MdOfflineShare  className='text-cyan-600 text-2xl'/> 
   </p>
 </div>
 

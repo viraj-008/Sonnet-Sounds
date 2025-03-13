@@ -26,7 +26,7 @@ const Navbar = () => {
       </span>
 
       {/* Buttons */}
-      <div className="hidden md:flex justify-center items-center">
+      <div className="hidden md:flex justify-center w-[200px]   items-center">
         {
           token ? <button onClick={()=>{dispatch(removeToken())
             toast.success('Logout seccesfull', {
@@ -41,11 +41,11 @@ const Navbar = () => {
                           transition: Bounce,
                         });
           }
-          } className="bg-red-600 text-white px-5 py-2 rounded-lg text-md font-semibold hover:text-black transition-all transform hover:scale-110 shadow-lg">
-            <Link to={"/"}>Logout</Link>
+          } className="bg-red-600 text-white px-6 py-2 rounded-lg text-md font-kanit hover:text-black transition-all transform hover:scale-105 shadow-lg">
+            <Link to={"/"}>L o g o u t</Link>
           </button> :
-            <button className="bg-emerald-600 text-white px-5 py-2 rounded-lg text-md font-semibold hover:text-black transition-all transform hover:scale-110 shadow-lg">
-              <Link to={"/login"}>Login</Link>
+            <button className="bg-green-600 text-white px-4  py-2 rounded-lg text-md font-kanit hover:text-black transition-all transform hover:scale-105 shadow-lg">
+              <Link to={"/login"}>L o g i n</Link>
             </button>
         }
       </div>
@@ -64,7 +64,7 @@ const Navbar = () => {
   animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20, scale: isOpen ? 1 : 0.95 }}
   exit={{ opacity: 0, y: -20, scale: 0.95 }}
   transition={{ duration: 0.2, ease: "easeInOut" }}
-  className="absolute top-24 z-20 right-[30px] w-[80%] mx-auto max-w-[300px] 
+  className="absolute top-24 z-20 right-[34px] w-[80%] mx-auto max-w-[300px] 
              bg-gradient-to-b from-gray-700 to-gray-900/90 
              backdrop-blur-lg border border-gray-400 shadow-2xl
              text-white flex flex-col items-center p-5 rounded-xl"
@@ -87,21 +87,21 @@ const Navbar = () => {
                           transition: Bounce,
                         });
               }}
-              className="w-full py-3 text-lg rounded-lg font-bold bg-red-700 transition-all transform hover:scale-105 shadow-md"
+              className="w-full py-3 font-montserrat  text-lg rounded-lg font-bold bg-red-700 transition-all transform hover:scale-105 shadow-md"
             >
-              <Link to={"/login"}>Logout</Link>
+              <Link to={"/login"}>L o g o u t</Link>
             </button>
             :
             <button
               onClick={() => setIsOpen(false)}
-              className="w-full py-3 text-lg font-bold bg-gray-800  transition-all transform hover:scale-105 shadow-md"
+              className="w-full font-montserrat py-3 text-lg font-bold bg-green-600 rounded-md  transition-all transform hover:scale-105 shadow-md"
             >
-              <Link to={"/login"}>login</Link>
+              <Link to={"/login"}>L o g i n</Link>
             </button>
             }
            
-            <span onClick={() => setIsOpen(false)} className="w-full mt-3 py-3 text-lg font-semibold text-center bg-gray-800  rounded-lg hover:text-black transition-all transform hover:scale-105 shadow-md">
-            <Link to={"/"}>Home</Link>
+            <span onClick={() => setIsOpen(false)} className="w-full font-montserrat mt-3 py-3 text-lg font-semibold text-center bg-gray-800  rounded-lg hover:text-black transition-all transform hover:scale-105 shadow-md">
+            <Link to={"/"}>H o m e</Link>
             </span>
             </motion.div>
         )}
