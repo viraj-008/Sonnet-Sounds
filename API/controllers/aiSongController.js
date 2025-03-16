@@ -24,7 +24,7 @@ export default async function aiController(req, res) {
     style: null,
     title: null,
     model: "V3_5",
-    callBackUrl:" https://65c3-2401-4900-8849-7d4b-d597-607c-ddb2-2427.ngrok-free.app/api/job/callB",
+    callBackUrl:"/api/job/callB",
   };
 
   try {

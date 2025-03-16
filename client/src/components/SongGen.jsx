@@ -36,7 +36,7 @@ const SongGen = () => {
     try {
       dispatch(setSongStatus("loading"));
       const response = await fetch(
-        " https://65c3-2401-4900-8849-7d4b-d597-607c-ddb2-2427.ngrok-free.app/api/job/gen",
+        "https://sonnet-sounds.onrender.com/api/job/gen",
         {
           method: "POST",
           headers: {
@@ -92,7 +92,7 @@ const SongGen = () => {
       const pollForAudioUrl = async () => {
         try {
           const statusResponse = await fetch(
-            ` https://65c3-2401-4900-8849-7d4b-d597-607c-ddb2-2427.ngrok-free.app/api/job/status?taskId=${taskId}`,
+            `https://sonnet-sounds.onrender.com/api/job/status?taskId=${taskId}`,
             {
               method: "GET",
               headers: {
