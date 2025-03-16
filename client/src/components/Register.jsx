@@ -43,7 +43,7 @@ export default function Register() {
 
     try {
       const res = await axios.post(
-        "https://a685-2401-4900-8848-34a6-5c19-fead-36dd-5e2f.ngrok-free.app/api/user/register",
+        "https://sonnet-sounds.onrender.com/api/user/register",
         values
       );
 

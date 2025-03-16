@@ -26,7 +26,7 @@ export default function Login() {
     dispatch(setAuthStatus("loading"));
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/user/login",
+        "https://sonnet-sounds.onrender.com/api/user/login",
         values
       );
 
