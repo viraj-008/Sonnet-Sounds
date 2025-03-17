@@ -32,8 +32,14 @@ const SongGen = () => {
   };
 
 
+  let controller = new AbortController(); 
+
   const handleGenerateSong = async () => {
     if (text.trim().length === 0) return;
+
+    controller.abort();
+    controller = new AbortController(); // Create a new AbortController
+    const signal = controller.signal; // Get signal
 
     try {
       dispatch(setSongStatus("loading"));
@@ -47,6 +53,7 @@ const SongGen = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ myPrompt: text }),
+          signal, 
         }
       );
 
@@ -100,6 +107,7 @@ const SongGen = () => {
               headers: {
                 "Content-Type": "application/json",
               },
+              signal,
             }
           );
 
@@ -143,39 +151,49 @@ const SongGen = () => {
             })
           }
         } catch (error) {
-          console.error("Error polling for audio URL:", error);
-          dispatch(setSongStatus("idle"));
-          toast.error(
-            "An error occurred while fetching song status.", { 
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          })
+          if (error.name === "AbortError") {
+            console.log("Request aborted.");
+          }else{
+
+            console.error("Error polling for audio URL:", error);
+            dispatch(setSongStatus("idle"));
+            toast.error(
+              "An error occurred while fetching song status.", { 
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            })
+          }
         }
       };
 
       pollForAudioUrl(); // Start polling
     } catch (error) {
-      console.error("Error generating song:", error);
-      dispatch(setSongStatus("idle"));
-      toast.error(
-        "An error occurred. Please try again..", { 
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      })
+      if (error.name === "AbortError") {
+        console.log("Request aborted.");
+      }else{
+
+        console.error("Error generating song:", error);
+        dispatch(setSongStatus("idle"));
+        toast.error(
+          "An error occurred. Please try again..", { 
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        })
+      }
     }
   };
 

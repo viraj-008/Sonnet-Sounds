@@ -13,6 +13,8 @@ const Navbar = () => {
   const token = useSelector(state => state.auth.token);
   const dispatch=useDispatch()
 
+  let controller = new AbortController()
+
   return (
     <div className="flex text-center px-6  bg-gray-900 py-3  md:py-6  shadow-2xl  ">
       {/* Logo */}
@@ -28,7 +30,10 @@ const Navbar = () => {
       {/* Buttons */}
       <div className="hidden md:flex justify-center w-[200px]   items-center">
         {
-          token ? <button onClick={()=>{dispatch(removeToken())
+          token ? <button onClick={
+            ()=>{
+              controller.abort()
+              dispatch(removeToken())
             toast.success('Logout seccesfull', {
                           position: "top-right",
                           autoClose: 5000,
@@ -73,6 +78,7 @@ const Navbar = () => {
 
             <button
               onClick={() =>{ 
+                controller.abort();
                 setIsOpen(false)
                 dispatch(removeToken())
                  toast.success('Logout seccesfull', {
