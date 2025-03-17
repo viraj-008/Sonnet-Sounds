@@ -11,7 +11,11 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin: "https://sonnet-soundsviraj.vercel.app", // ✅ Allow only your frontend
+  methods: ["GET", "POST"], // ✅ Allowed methods
+  allowedHeaders: ["Content-Type", "Authorization"] // ✅ Allowed headers
+}));
 
 app.use((req, res, next) => {
   if (req.method === 'POST' || req.method === 'PUT') {
