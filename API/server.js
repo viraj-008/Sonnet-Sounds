@@ -5,22 +5,20 @@ import dotenv from 'dotenv';
 import userRoute from './routes/user.js';
 import AIRoute from './routes/ai.js';
 
-dotenv.config({ path: "./.env"});
+dotenv.config({ path: "./.env" });
 
 const app = express();
 
 app.use(express.json());
 
 app.use(cors({
-  origin: "https://sonnet-soundsviraj.vercel.app", // ✅ Allow only your frontend
-  methods: ["GET", "POST"], // ✅ Allowed methods
-  allowedHeaders: ["Content-Type", "Authorization"] // ✅ Allowed headers
+  origin: "*"
 }));
 
 app.use((req, res, next) => {
   if (req.method === 'POST' || req.method === 'PUT') {
     try {
-      express.json()(req, res, next); 
+      express.json()(req, res, next);
     } catch (error) {
       return res.status(400).json({ error: 'Invalid JSON' });
     }
