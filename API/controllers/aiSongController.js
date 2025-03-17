@@ -24,7 +24,7 @@ export default async function aiController(req, res) {
     style: null,
     title: null,
     model: "V3_5",
-    callBackUrl:"/api/job/callB",
+    callBackUrl:"https://sonnet-sounds.onrender.com/api/job/callB",
   };
 
   try {

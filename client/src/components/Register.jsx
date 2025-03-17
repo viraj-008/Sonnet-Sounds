@@ -48,7 +48,7 @@ export default function Register() {
       );
 
       if (res.data.success) {
-        toast.success(res.data.message, {
+        toast.success(res.data.message || "Registration Succesfully", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
