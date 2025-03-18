@@ -36,19 +36,9 @@ const SongGen = () => {
 
   
 // Track AbortController reference
-const controllerRef = useRef(new AbortController());
   const handleGenerateSong = async () => {
     if (text.trim().length === 0) return;
   
-
-      
-  controllerRef.current = new AbortController(); // Create a new AbortController
-  const signal = controllerRef.current.signal; // Get 
-  
-  console.log("Starting song generation...");
-  console.log("Token:", token);
-  console.log("AbortController signal:", signal);
-
     try {
       dispatch(setSongStatus("loading"));
       const response = await fetch(
@@ -166,9 +156,7 @@ const controllerRef = useRef(new AbortController());
             })
           }
         } catch (error) {
-          if (error.name === "AbortError") {
-            console.log("Request aborted.");
-          }else{
+       
 
             console.error("Error polling for audio URL:", error);
             dispatch(setSongStatus("idle"));
@@ -184,15 +172,13 @@ const controllerRef = useRef(new AbortController());
               theme: "light",
               transition: Bounce,
             })
-          }
+        
         }
       };
 
       pollForAudioUrl(); // Start polling
     } catch (error) {
-      if (error.name === "AbortError") {
-        console.log("Request aborted.");
-      } else {
+    
         console.error("Error generating song:", error);
         dispatch(setSongStatus("idle"));
         toast.error("An error occurred. Please try again.", { 
@@ -206,19 +192,13 @@ const controllerRef = useRef(new AbortController());
           theme: "light",
           transition: Bounce,
         });
-      }
+      
     }
   };
   
   
   
-  useEffect(() => {
-    if (!token) {
-      console.log("Token removed. Stopping polling...");
-      controllerRef.current.abort(); // Stop ongoing API calls
-      dispatch(setSongStatus("idle"));
-    }
-  }, [token]); // Run effect when token changes
+  // Run effect when token changes
   const audioList = [
     {
       name: "text-to-song",
