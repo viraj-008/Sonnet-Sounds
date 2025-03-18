@@ -98,7 +98,12 @@ const SongGen = () => {
       let attempts = 0;
 
       const pollForAudioUrl = async () => {
+        if(!token){
+          dispatch(setSongStatus("idle"));
+          return 
+        }
         try {
+
           const statusResponse = await fetch(
             `https://sonnet-sounds.onrender.com/api/job/status?taskId=${taskId}`,
             {

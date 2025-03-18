@@ -18,8 +18,8 @@ const AuthSlice = createSlice({
       state.token = action.payload;
       localStorage.setItem("token", action.payload);
     },
-    removeToken(state, action){
-      localStorage.removeItem("token", action.payload);
+    removeToken(state){
+      localStorage.removeItem("token");
       state.token = "";
     },
   },
