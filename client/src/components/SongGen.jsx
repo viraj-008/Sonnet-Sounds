@@ -49,7 +49,6 @@ const SongGen = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "true",
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ myPrompt: text }),
@@ -106,6 +105,7 @@ const SongGen = () => {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
               },
               signal,
             }

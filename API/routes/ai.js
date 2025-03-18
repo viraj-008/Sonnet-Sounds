@@ -6,7 +6,7 @@ import {authenticateUser} from '../middleware/middleware.js'
 const router = express.Router();
 
 router.post('/gen',authenticateUser,AiController);
-router.post('/callB',callBack);
+router.post('/callB',authenticateUser,callBack);
 router.get('/status',getStatus);
 
 export default router;
