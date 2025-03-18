@@ -39,11 +39,7 @@ const SongGen = () => {
 const controllerRef = useRef(new AbortController());
   const handleGenerateSong = async () => {
     if (text.trim().length === 0) return;
-    
-    if (controllerRef.current) {
-      console.log("Aborting previous request...");
-      controllerRef.current.abort();
-    }
+  
 
       
   controllerRef.current = new AbortController(); // Create a new AbortController
@@ -64,7 +60,7 @@ const controllerRef = useRef(new AbortController());
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ myPrompt: text }),
-          signal
+        
          
         }
       );
@@ -125,13 +121,13 @@ const controllerRef = useRef(new AbortController());
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
               },
-              signal
+             
            
             }
           );
 
           const statusData = await statusResponse.json();
-          console.log("Status Response:", statusData);
+          console.log("Status Response:", statusData,statusData.audioUrl);
 
           if (statusData.audioUrl) {
             // Audio URL is available
