@@ -16,7 +16,7 @@ const Navbar = () => {
   let controller = new AbortController()
 
   return (
-    <div className="flex text-center px-6  bg-gray-900 py-3  md:py-6  shadow-2xl  ">
+    <div className="flex text-center px-6  bg-gray-900 py-3  md:py-3  shadow-2xl  ">
       {/* Logo */}
       <span className="mx-auto flex justify-start items-center w-full text-white font-bold">
         <Link to={"/"}>
@@ -106,7 +106,7 @@ const Navbar = () => {
             </button>
             }
            
-            <span onClick={() => setIsOpen(false)} className="w-full font-montserrat mt-3 py-3 text-lg font-semibold text-center bg-gray-800  rounded-lg hover:text-black transition-all transform hover:scale-105 shadow-md">
+            <span onClick={() => setIsOpen(false)} className="w-full font-montserrat mt-3 py-3 text-lg font-semibold text-center bg-gray-800  rounded-lg  transition-all transform hover:scale-105 shadow-md">
             <Link to={"/"}>H o m e</Link>
             </span>
             </motion.div>

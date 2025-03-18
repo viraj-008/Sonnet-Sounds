@@ -97,7 +97,7 @@ export async function callBack(req, res) {
   }
 }
 
-// Status endpoint to check the progress of a task
+// Status endpoint to check the progress of a task.
 export async function getStatus(req, res) {
   const { taskId } = req.query;
 

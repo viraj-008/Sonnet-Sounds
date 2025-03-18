@@ -1,4 +1,5 @@
 import  { useState } from 'react'
+import { useRef, useEffect  } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSongStatus, setSongUrl } from '../slices/Songslice.js'
 import { RotatingLines } from 'react-loader-spinner';
@@ -12,9 +13,9 @@ import { motion} from "framer-motion";
 
 
 const SongGen = () => {
-  // https://sonnet-sounds.onrender.com
 
-// const URL = "https://ecb6-2401-4900-884b-29c5-9c98-32e3-9ed6-9c17.ngrok-free.app";
+
+// const URL = "https://c103-2401-4900-884b-ad55-955b-eca5-399f-6acb.ngrok-free.app";
 
   const [text, setText] = useState("");
 
@@ -28,18 +29,29 @@ const SongGen = () => {
 
 
   const handleInputChange = (e) => {
+
     setText(e.target.value);
   };
 
 
-  let controller = new AbortController(); 
-
+  
+// Track AbortController reference
+const controllerRef = useRef(new AbortController());
   const handleGenerateSong = async () => {
     if (text.trim().length === 0) return;
+    
+    if (controllerRef.current) {
+      console.log("Aborting previous request...");
+      controllerRef.current.abort();
+    }
 
-    controller.abort();
-    controller = new AbortController(); // Create a new AbortController
-    const signal = controller.signal; // Get signal
+      
+  controllerRef.current = new AbortController(); // Create a new AbortController
+  const signal = controllerRef.current.signal; // Get 
+  
+  console.log("Starting song generation...");
+  console.log("Token:", token);
+  console.log("AbortController signal:", signal);
 
     try {
       dispatch(setSongStatus("loading"));
@@ -52,7 +64,8 @@ const SongGen = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ myPrompt: text }),
-          signal, 
+          signal
+         
         }
       );
 
@@ -92,16 +105,16 @@ const SongGen = () => {
       }
 
       const taskId = data.taskId;
-
       const pollInterval = 20000; 
       const maxAttempts = 15; 
       let attempts = 0;
-
+    
       const pollForAudioUrl = async () => {
         if(!token){
           dispatch(setSongStatus("idle"));
           return 
         }
+        console.log(token)
         try {
 
           const statusResponse = await fetch(
@@ -112,7 +125,8 @@ const SongGen = () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
               },
-              signal,
+              signal
+           
             }
           );
 
@@ -182,12 +196,10 @@ const SongGen = () => {
     } catch (error) {
       if (error.name === "AbortError") {
         console.log("Request aborted.");
-      }else{
-
+      } else {
         console.error("Error generating song:", error);
         dispatch(setSongStatus("idle"));
-        toast.error(
-          "An error occurred. Please try again..", { 
+        toast.error("An error occurred. Please try again.", { 
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -197,12 +209,20 @@ const SongGen = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
-        })
+        });
       }
     }
   };
-
-
+  
+  
+  
+  useEffect(() => {
+    if (!token) {
+      console.log("Token removed. Stopping polling...");
+      controllerRef.current.abort(); // Stop ongoing API calls
+      dispatch(setSongStatus("idle"));
+    }
+  }, [token]); // Run effect when token changes
   const audioList = [
     {
       name: "text-to-song",
@@ -233,7 +253,7 @@ const SongGen = () => {
   className="self-stretch text-white text-5xl md:text-8xl font-bold font-stencil"
 >
   Welcome to:  
-  <span className="text-[#3e9d26]  font-anton"> Sonnets-Sounds</span>
+  <span className="text-[#3e9d26]  font-anton"> Sonnet-Sounds</span>
 </motion.h1>
 
             <p className="self-stretch text-gray-300 text-xl  font-montserrat ">
@@ -242,30 +262,30 @@ const SongGen = () => {
           </div>
           <div className="justify-start items-center gap-5 inline-flex">
             <div className="justify-start items-center gap-2.5 flex">
-              <p className="text-white text-sm font-normal font-['Roboto']">click hare</p>
+              {/* <p className="text-white text-sm font-normal font-['Roboto']">click hare</p> */}
               <div className="relative">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
                   <path
                     d="M20.7806 12.5306L14.0306 19.2806C13.8899 19.4213 13.699 19.5004 13.5 19.5004C13.301 19.5004 13.1101 19.4213 12.9694 19.2806C12.8286 19.1399 12.7496 18.949 12.7496 18.75C12.7496 18.551 12.8286 18.3601 12.9694 18.2194L18.4397 12.75H3.75C3.55109 12.75 3.36032 12.671 3.21967 12.5303C3.07902 12.3897 3 12.1989 3 12C3 11.8011 3.07902 11.6103 3.21967 11.4697C3.36032 11.329 3.55109 11.25 3.75 11.25H18.4397L12.9694 5.78061C12.8286 5.63988 12.7496 5.44901 12.7496 5.24999C12.7496 5.05097 12.8286 4.8601 12.9694 4.71936C13.1101 4.57863 13.301 4.49957 13.5 4.49957C13.699 4.49957 13.8899 4.57863 14.0306 4.71936L20.7806 11.4694C20.8504 11.539 20.9057 11.6217 20.9434 11.7128C20.9812 11.8038 21.0006 11.9014 21.0006 12C21.0006 12.0986 20.9812 12.1961 20.9434 12.2872C20.9057 12.3782 20.8504 12.461 20.7806 12.5306Z"
                     fill="white"
                   />
-                </svg>
+                {/* </svg> */}
               </div>
             </div>
-            <button href="/#started" className="px-8 py-2.5 bg-[#3e9d26] rounded-[10px] justify-center items-center gap-2.5 flex text-white text-sm font-semibold font-kanit 
+            {/* <button href="/#started" className="px-8 py-2.5 bg-[#3e9d26] rounded-[10px] justify-center items-center gap-2.5 flex text-white text-sm font-semibold font-kanit 
 ">
              <a href="/#started">Getting Started</a> 
-            </button>
+            </button> */}
           </div>
         </div>
         <motion.img
   src="./images/logox.png"
   alt="logo"
   className="w-full max-w-[400px]"
-  initial={{ opacity: 0, x: 50 }} // Start off-screen to the right
-  whileInView={{ opacity: 1, x: 0 }} // Slide in when visible
-  transition={{ duration: 0.8, ease: "easeOut" }} // Smooth transition
-  viewport={{ once: false, amount: 0.3 }} // Triggers every scroll when 30% visible
+  initial={{ opacity: 0, x: 50 }} 
+  whileInView={{ opacity: 1, x: 0 }} 
+  transition={{ duration: 0.8, ease: "easeOut" }} 
+  viewport={{ once: false, amount: 0.3 }} 
 />
       </div>
     </section>
@@ -339,12 +359,12 @@ const SongGen = () => {
 
   {/* Loading Message */}
   {songStatus === "loading" && (
-    <div className="mt-4 w-[80%] mx-auto text-center p-2 font-serif font-semibold rounded-xl text-gray-900 animate-pulse bg-emerald-400 ">
+    <div className="mt-4 w-[80%] text-green-400 border font-anton mx-auto text-center p-2  font-semibold rounded-xl animate-pulse  ">
       ⏳ Generating your song... Please wait (20-40 sec) 🎵
     </div>
   )}
       {songStatus === "generated" && (
-        <div className="mt-10 text-center bg-blue-600 p-6 rounded-2xl shadow-xl border border-blue-500 ">
+        <div className="mt-10  text-center bg-blue-600 p-6 rounded-2xl shadow-xl border border-blue-500 ">
           <ReactJkMusicPlayer
             audioLists={audioList}
             theme="dark"

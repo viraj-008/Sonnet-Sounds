@@ -18,9 +18,9 @@ const AuthSlice = createSlice({
       state.token = action.payload;
       localStorage.setItem("token", action.payload);
     },
-    removeToken(state){
+    removeToken(state) {
       localStorage.removeItem("token");
-      state.token = "";
+      return { ...state, token: "" };  // Ensure a new state object is returned
     },
   },
 });
