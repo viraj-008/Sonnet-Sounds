@@ -1,5 +1,6 @@
 import  { useState } from "react";
 import { useSelector ,useDispatch} from "react-redux";
+import { setSongStatus, } from '../slices/Songslice.js'
 import { removeToken } from "../slices/AuthSlice";
 import { BsMenuButtonWide } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
@@ -13,7 +14,6 @@ const Navbar = () => {
   const token = useSelector(state => state.auth.token);
   const dispatch=useDispatch()
 
-  let controller = new AbortController()
 
   return (
     <div className="flex text-center px-6  bg-gray-900 py-3  md:py-3  shadow-2xl  ">
@@ -32,7 +32,7 @@ const Navbar = () => {
         {
           token ? <button onClick={
             ()=>{
-              controller.abort()
+              dispatch(setSongStatus("idle"));
               dispatch(removeToken())
             toast.success('Logout seccesfull', {
                           position: "top-right",
@@ -78,7 +78,7 @@ const Navbar = () => {
 
             <button
               onClick={() =>{ 
-                controller.abort();
+                   dispatch(setSongStatus("idle"));
                 setIsOpen(false)
                 dispatch(removeToken())
                  toast.success('Logout seccesfull', {
