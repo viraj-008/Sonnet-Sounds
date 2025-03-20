@@ -31,11 +31,13 @@ const SongGen = () => {
 
 
 
-  // Track AbortController reference
   const handleGenerateSong = async () => {
-    if (text.trim().length === 0) return;
+    if (text.trim().length === 0) {
+      toast.error("⚠️ Please enter a prompt before generating a song!", { autoClose: 5000 });
+      return;
+    }
 
-    resetAbortController(); // Create a new AbortController for this request
+    resetAbortController(); 
     const signal = abortController.signal;
     try {
       dispatch(setSongStatus("loading"));
@@ -175,7 +177,7 @@ const SongGen = () => {
 
       pollForAudioUrl(); // Start polling
     } catch (error) {
-      
+
       if (error.name === "AbortError") {
         console.log("Song generation request aborted");
         return;
