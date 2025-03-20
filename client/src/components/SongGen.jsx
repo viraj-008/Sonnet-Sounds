@@ -9,6 +9,7 @@ import "react-jinke-music-player/assets/index.css";
 import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from "framer-motion";
+import {abortController, resetAbortController} from '../abortController/abort'
 
 
 const SongGen = () => {
@@ -34,6 +35,8 @@ const SongGen = () => {
   const handleGenerateSong = async () => {
     if (text.trim().length === 0) return;
 
+    resetAbortController(); // Create a new AbortController for this request
+    const signal = abortController.signal;
     try {
       dispatch(setSongStatus("loading"));
       const response = await fetch(
@@ -45,6 +48,7 @@ const SongGen = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ myPrompt: text }),
+          signal, 
         }
       );
 
@@ -90,6 +94,8 @@ const SongGen = () => {
 
       const pollForAudioUrl = async () => {
 
+        if (signal.aborted) return;
+
         try {
           const statusResponse = await fetch(
             `https://sonnet-sounds.onrender.com/api/job/status?taskId=${taskId}`,
@@ -99,6 +105,7 @@ const SongGen = () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
               },
+              signal, 
             }
           );
 
@@ -142,7 +149,11 @@ const SongGen = () => {
             })
           }
         } catch (error) {
-
+              
+          if (error.name === "AbortError") {
+            console.log("Polling stopped due to logout");
+            return;
+          }
 
           console.error("Error polling for audio URL:", error);
           dispatch(setSongStatus("idle"));
@@ -164,7 +175,11 @@ const SongGen = () => {
 
       pollForAudioUrl(); // Start polling
     } catch (error) {
-
+      
+      if (error.name === "AbortError") {
+        console.log("Song generation request aborted");
+        return;
+      }
       console.error("Error generating song:", error);
       dispatch(setSongStatus("idle"));
       toast.error("An error occurred. Please try again.", {

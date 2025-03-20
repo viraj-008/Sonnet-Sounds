@@ -8,6 +8,7 @@ import {  toast ,Bounce} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import { motion} from "framer-motion";
+import {abortController} from '../abortController/abort.js'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,11 @@ const Navbar = () => {
         {
           token ? <button onClick={
             ()=>{
+
+              if (abortController) {
+    abortController.abort(); // Abort ongoing API requests & polling
+    console.log("Song generation and polling stopped.");
+  }
               dispatch(setSongStatus("idle"));
               dispatch(removeToken())
             toast.success('Logout seccesfull', {
